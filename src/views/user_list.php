@@ -29,14 +29,24 @@
                         </thead>
                         <tbody>
                             <?php foreach($users as $row): ?>
+                               
                             <tr>
                                 <td><?php echo htmlspecialchars($row['full_name'] ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($row['email'] ?? ''); ?></td>
                                 <td><span class="badge bg-secondary"><?php echo htmlspecialchars($row['Age'] ?? ''); ?></span></td>
-                                <td><small class="text-muted"><?php echo htmlspecialchars($row['Created_User_at'] ?? ''); ?></small></td>
+                                <td><small class="text-muted"><?php echo ($row['Created_User_at'] ?? ''); ?></small></td>
                                 <td class="text-center px-3">
                                     <a href="#" class="btn btn-sm btn-outline-primary me-1">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
+                                                            
+                                    <form method="POST" action="index.php" class="d-inline"
+                                          onsubmit="return confirm('Delete this user? This action cannot be undone.');">
+                                        <input type="hidden" name="action"     value="delete">
+                                        <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
+                                        <input type="hidden" name="id_user"    value="<?= (int) $row['id_user'] ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -46,5 +56,9 @@
             </div>
         </div>
     </div>
+
+    <?php include_once __DIR__ . '/footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

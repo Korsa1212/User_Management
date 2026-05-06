@@ -1,4 +1,6 @@
 <?php 
+include_once __DIR__ . '/../src/views/navbar.php';
+
 include '../src/models/user.php';
 
 $error = '';
@@ -37,9 +39,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 }
 include_once '../src/views/ajouterUser.php';
-?>
-
-
-
-
 ?>

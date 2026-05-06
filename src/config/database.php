@@ -1,7 +1,7 @@
 <?php 
 
 function getDB() {
-    // Le chemin vers le fichier .env (qui est maintenant 2 niveaux plus haut)
+    // Load .env file
     $envPath = __DIR__ . '/../../.env';
     
     if (file_exists($envPath)) {
