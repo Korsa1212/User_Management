@@ -1,7 +1,6 @@
 <?php 
 session_start();
 
-include_once __DIR__ . '/../src/views/navbar.php';
 
     
     // here to import the model file and instantiate the model class
@@ -20,13 +19,20 @@ include_once __DIR__ . '/../src/views/navbar.php';
         }
     
         $user->deleteUser((int) $_POST['id_user']);
-        header('Location: index.php?deleted=1');
-        exit;
+        header("Location: index.php");
+        exit();
     }
     
 
     $users = $user->getAll();
     $csrf_token = $_SESSION['csrf_token'];
-    
+
+
+//navbar
+    include_once __DIR__ . '/../src/views/navbar.php';
+//home
     include_once __DIR__ . '/../src/views/user_list.php';
-?>
+
+
+
+    ?>

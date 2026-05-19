@@ -25,3 +25,5 @@ $users = $userModel->getAll();
 $csrf_token = $_SESSION['csrf_token'];
 
 require_once __DIR__ . '/../src/views/user_list.php';
+
+?>

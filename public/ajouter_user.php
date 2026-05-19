@@ -1,5 +1,5 @@
 <?php 
-include_once __DIR__ . '/../src/views/navbar.php';
+
 
 include '../src/models/user.php';
 
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             exit();
         } catch (PDOException $e) {
             // Catching duplicate emails or other DB issues
-            $error = 'This email is already in use!';
+            echo $e ;
         }
     }
 }

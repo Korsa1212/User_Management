@@ -36,7 +36,14 @@
                                 <td><span class="badge bg-secondary"><?php echo htmlspecialchars($row['Age'] ?? ''); ?></span></td>
                                 <td><small class="text-muted"><?php echo ($row['Created_User_at'] ?? ''); ?></small></td>
                                 <td class="text-center px-3">
-                                    <a href="#" class="btn btn-sm btn-outline-primary me-1">Edit</a>
+                                   <form method="POST" action="\edit_user.php" class="d-inline">
+                                         
+                                        <input type="hidden" name="action"     value="edit">
+                                        <input type="hidden" name="id_user"    value="<?= (int) $row['id_user'] ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                                            edit
+                                        </button>
+                                    </form>
                                                             
                                     <form method="POST" action="index.php" class="d-inline"
                                           onsubmit="return confirm('Delete this user? This action cannot be undone.');">

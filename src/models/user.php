@@ -20,6 +20,11 @@ class user {
         $stmt = getDB()->prepare("DELETE FROM Users WHERE id_user = ?");
         return $stmt->execute([$id]);
     }
+    function editUser(int $id):bool {
+        $db =getDB();
+        $stmt=$db->prepare('UPDATE Users SET full_name = ?  ,email = ? ,password= ? ,Age = ? WHERE id_user = ?  ');
+        return $stmt->execute([$full_name ,$email ,$password ,$Age,'user']);
+    }
 
 
     
