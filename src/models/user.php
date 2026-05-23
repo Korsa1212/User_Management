@@ -20,12 +20,15 @@ class user {
         $stmt = getDB()->prepare("DELETE FROM Users WHERE id_user = ?");
         return $stmt->execute([$id]);
     }
-    function editUser(int $id):bool {
-        $db =getDB();
-        $stmt=$db->prepare('UPDATE Users SET full_name = ?  ,email = ? ,password= ? ,Age = ? WHERE id_user = ?  ');
-        return $stmt->execute([$full_name ,$email ,$password ,$Age,'user']);
+    function getUserByID(int $id){
+        $stmt = getDB()->prepare("SELECT id_user FROM Users WHERE id_user = ?") ;
+        $stmt->execute([$id]) ;
+        return $stmt->fetch();
     }
-
+    function update_user(int $id ,$full_name ,$email ,$password ,$Age){
+        $stmt = getDB()->prepare("UPDATE Users SET full_name = ? ,email =? ,password=? ,Age= ?  WHERE id_user = ? ") ;
+        return $stmt ->execute([$full_name ,$email ,$password ,$Age,$id]) ;
+    }
 
     
 
